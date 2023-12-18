@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 """ Module for testing file storage"""
+
+from unittest.mock import patch, MagicMock
+from io import StringIO
+from console import HBNBCommand
 import unittest
 from models.base_model import BaseModel
 from models import storage
@@ -107,3 +111,35 @@ class test_fileStorage(unittest.TestCase):
         from models.engine.file_storage import FileStorage
         print(type(storage))
         self.assertEqual(type(storage), FileStorage)
+
+
+class TestHBNBCommandCreate(unittest.TestCase):
+    """
+    class to test the do_create function in
+    console.py
+    """
+
+    def setUp(self):
+        self.command = HBNBCommand()
+        self.mock_stdout = StringIO()
+        self.command.storage = MaginMock()
+
+    def tearDown(self):
+        self.mock_stdout.close()
+
+    @patch('sys.stdout', new_callable=StringIO)
+
+    def test_do_create(self, mock, stdout):
+        command = HBNBCommand()
+
+        command.do_create("ExampleClass attribute1='value1' attribute2=42")
+        expected_output = "generated_uuid\n"
+        self.assertEqual(mock_stdout.getvalue().strip(), expected_output)
+
+        command.do_create("")
+        expected_output = "** class name missing **"
+        self.assertEqual(mock_stdout.getvalue().strip(), expected_output)
+
+
+if __name__ == '__main__':
+    unittest.main()
