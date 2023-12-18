@@ -1,7 +1,7 @@
 -- Switch to mysql database
 -- USE mysql;
-GRANT CREATE USER ON *.* TO 'root'@'localhost';
-GRANT GRANT OPTION ON *.* TO 'root'@'localhost';
+-- GRANT CREATE USER ON *.* TO 'root'@'localhost';
+-- GRANT GRANT OPTION ON *.* TO 'root'@'localhost';
 
 -- Create the database if it doesn't exit
 CREATE DATABASE IF NOT EXISTS hbnb_dev_db;
@@ -10,8 +10,8 @@ CREATE DATABASE IF NOT EXISTS hbnb_dev_db;
 CREATE USER IF NOT EXISTS 'hbtn_dev'@'localhost'
 IDENTIFIED BY 'hbnb_dev_pwd';
 
-GRANT ALL
-ON `hbnb_dev_db`.*
+GRANT ALL PRIVILEGES
+ON hbnb_dev_db.*
 TO 'hbnb_dev'@'localhost';
 
 GRANT SELECT
