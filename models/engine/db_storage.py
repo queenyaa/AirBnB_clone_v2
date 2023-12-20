@@ -30,7 +30,8 @@ class DBStorage:
 
         connection_str = "mysql+mysqldb://{}:{}@{}/{}"
         self.__engine = create_engine(connection_str.
-                        format(user, password, host, db), pool_pre_ping=True)
+                                      format(user, password, host, db),
+                                      pool_pre_ping=True)
 
         if env == 'test':
             Base.metadata.drop_all(self.__engine)
@@ -39,7 +40,7 @@ class DBStorage:
         """
         Qery all objects depending on the class name
         """
-        
+
         classes = {
                     'BaseModel': BaseModel, 'User': User, 'Place': Place,
                     'State': State, 'City': City, 'Amenity': Amenity,
@@ -62,7 +63,7 @@ class DBStorage:
                     if len(q_result) > 0:
                         for q_res in q_result:
                             key = "{}.{}".format(q_res.__class__.__name__,
-                                                    q_res.id)
+                                                 q_res.id)
                             d_dict[ky] = q_res
             return (d_dict)
 
