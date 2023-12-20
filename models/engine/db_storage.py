@@ -6,7 +6,7 @@ DBStorage module for HBNB project
 
 from os import getenv
 import models
-from models.base_model import Base
+from models.base_model import BaseModel, Base
 from models.state import State
 from models.city import City
 from models.user import User
