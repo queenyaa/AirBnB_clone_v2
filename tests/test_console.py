@@ -118,7 +118,7 @@ class TestConsole(unittest.TestCase):
         sys.stdout = self.backup
         self.assertEqual("** instance id missing **\n", y)
 
-    @unittest.skipIf(db = 'db', 'Testing databse storage only')
+    @unittest.skipIf(db == 'db', 'Testing databse storage only')
     def test_no_instan_found(self):
         """
         Test show message error id missing

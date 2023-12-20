@@ -1,31 +1,45 @@
 #!/usr/bin/python3
 """ """
+
 from models.base_model import BaseModel
 import unittest
 import datetime
+from os import getenv
 from uuid import UUID
 import json
 import os
 
 
-class test_basemodel(unittest.TestCase):
-    """ """
+class TestBaseModel(unittest.TestCase):
+    """ to test the BaseModel Module  """
+
+    @classmethod
+    def setUp(self):
+        self.base = BaseModel()
+        self.base.names = "Afi"
+        self.base.num =40
+
+        try:
+            os.rename('file.json', 'tmp')
+        except IOError:
+            pass
+
+    @classmethod
+    def tearDown(self):
+        try:
+            os.remove('file.json')
+        except IOError:
+            pass
+        try:
+            os.rename('tmp', 'file.json')
+        except IOError:
+            pass
 
     def __init__(self, *args, **kwargs):
         """ """
         super().__init__(*args, **kwargs)
         self.name = 'BaseModel'
         self.value = BaseModel
-
-    def setUp(self):
-        """ """
-        pass
-
-    def tearDown(self):
-        try:
-            os.remove('file.json')
-        except:
-            pass
 
     def test_default(self):
         """ """
@@ -96,4 +110,23 @@ class test_basemodel(unittest.TestCase):
         self.assertEqual(type(new.updated_at), datetime.datetime)
         n = new.to_dict()
         new = BaseModel(**n)
-        self.assertFalse(new.created_at == new.updated_at)
+        if os.getenv('HBNB_TYPE_STORAGE') != 'db':
+            self.assertFalse(new.created_at == new.updated_at)
+        else:
+            self.assertIsNone(new.created_at)
+
+    def test_pep8_BaseModel(self):
+        """ testing pep8 of BaseModel Module """
+        st = pep8.StyleGuide(quiet=True)
+        q = style.check_files(['models/base_model.py'])
+        self.assertEqual(p.total_errors, 0, 'fix pep8')
+
+    @unittest.skipIf(getenv("HBNB_TYPE_STORAGE") = 'db', 'DB')
+    def test_BaseModel_saving(self):
+        """ test the saving BaseModel """
+        self.base.save()
+        self.assertNotEqual(self.base.created_at, self.base.updated_at)
+
+
+if __name__ = "__main__":
+    unittest.main()
