@@ -5,16 +5,12 @@ DBStorage module for HBNB project
 """
 
 from os import getenv
-from models.base_model import BaseModel, Base
-from models.user import User
-from models.place import Place
+import models
+from models.base_model import Base
 from models.state import State
 from models.city import City
-from models.amenity import Amenity
-from models.review import Review
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker, scoped_session
-from models.base_model import BaseModel, Base
 
 
 class DBStorage:
@@ -30,7 +26,7 @@ class DBStorage:
         password = getenv("HBNB_MYSQL_PWD")
         host = getenv("HBNB_MYSQL_HOST")
         db = getenv("HBNB_MYSQL_DB")
-        env = getenv("HBNB_ENV")
+        env = getenv("HBNB_ENV", "none")
 
         connection_str = "mysql+mysqldb://{}:{}@{}/{}"
         self.__engine = create_engine(connection_str.
@@ -38,11 +34,6 @@ class DBStorage:
 
         if env == 'test':
             Base.metadata.drop_all(self.__engine)
-
-        Session = scoped_session(sessionmaker(bind=self.__engine,
-                                              expire_on_commit=False))
-
-        self.__session = Session()
 
     def all(self, cls=None):
         """
@@ -57,10 +48,9 @@ class DBStorage:
         d_dict = {}
 
         if cls != "":
-            if isinstance(cls, str) is True:
-                q_result = self.__session.query(classes[cls]).all()
-            else:
-                q_result = self.__session.query(cls).all()
+            # if isinstance(cls, str) is True:
+            q_result = self.__session.query(classes[cls]).all()
+
             for q_res in q_result:
                 ky = "{}.{}".format(q_res.__class__.__name__, q_res.id)
                 d_dict[ky] = q_res
@@ -93,9 +83,10 @@ class DBStorage:
         """
         Create all tables and create the current database session
         """
-        Base.metadata.create_all(self.__engine)
-        Session = scoped_session(sessionmaker(bind=self.__engine,
-                                             expire_on_commit=False))
+        self.__session = Base.metadata.create_all(self.__engine)
+        rload = sessionmaker(bind=self.__engine,
+                             expire_on_commit=False)
+        Session = scoped_session(rload)
         self.__session = Session()
 
     def close(self):
