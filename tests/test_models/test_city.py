@@ -4,12 +4,12 @@
 import unittest
 import os
 from os import getenv
-from tests.test_models.test_base_model import test_basemodel
+from models.base_model import BaseModel
 from models.city import City
 import pep8
 
 
-class TestCity(unittest.TestCase, test_basemodel):
+class TestCity(unittest.TestCase):
     """ """
 
     @classmethod

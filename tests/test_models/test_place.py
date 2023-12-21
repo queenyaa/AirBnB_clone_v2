@@ -5,11 +5,11 @@ import unittest
 import os
 import pep8
 from os import getenv
-from tests.test_models.test_base_model import test_basemodel
+from models.base_model import BaseModel
 from models.place import Place
 
 
-class TestPlace(unittest.TestCase, test_basemodel):
+class TestPlace(unittest.TestCase):
     """ """
     @classmethod
     def setUp(self):
@@ -114,5 +114,5 @@ class TestPlace(unittest.TestCase, test_basemodel):
         self.assertEqual('to_dict' in dir(self.place), True)
 
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     unittest.main()

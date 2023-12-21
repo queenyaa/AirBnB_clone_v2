@@ -20,9 +20,6 @@ class City(BaseModel, Base):
                               cascade="all, delete, delete-orphan")
 
     else:
+        __tablename__ = 'cities'
         name = ""
         state_id = ""
-
-    def __init__(self, *args, **kwargs):
-        """ to initialize the class """
-        super().__init__(*args, **kwargs)

@@ -13,7 +13,7 @@ t_fmt = "%Y-%m-%d %H:%M:%S.%f"
 if getenv("HBNB_TYPE_STORAGE") == 'db':
     Base = declarative_base()
 else:
-    Base = object
+    Base = declarative_base()
 
 
 class BaseModel:

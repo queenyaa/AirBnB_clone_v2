@@ -1,16 +1,26 @@
 #!/usr/bin/python3
 """ Module for testing file storage"""
 
+import unittest
 from unittest.mock import patch, MagicMock
 from io import StringIO
 from console import HBNBCommand
 import unittest
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 from models import storage
 import os
+import json
+from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.engine.file_storage import FileStorage
+from models.amenity import Amenity
+import pep8
 
 
-class test_fileStorage(unittest.TestCase):
+class TestFileStorage(unittest.TestCase):
     """ Class to test the file storage method """
 
     def setUp(self):
@@ -111,6 +121,12 @@ class test_fileStorage(unittest.TestCase):
         from models.engine.file_storage import FileStorage
         print(type(storage))
         self.assertEqual(type(storage), FileStorage)
+
+    def test_FileStorage_pep8(self):
+        """ pep8 """
+        st = pep8.StyleGuide(quiet=True)
+        q = st.check_files(['models/engine/file_storage.py'])
+        self.assertEqual(q.total_errors, 0, 'fix pep8')
 
 
 class TestHBNBCommandCreate(unittest.TestCase):

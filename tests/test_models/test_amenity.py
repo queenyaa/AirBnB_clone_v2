@@ -4,11 +4,11 @@
 import pep8
 import unittest
 from os import getenv
-from tests.test_models.test_base_model import test_basemodel
+from models.base_model import BaseModel
 from models.amenity import Amenity
 
 
-class TestAmenity(unittest.TestCase, test_basemodel):
+class TestAmenity(unittest.TestCase):
     """ """
 
     @classmethod

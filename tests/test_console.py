@@ -13,6 +13,7 @@ import console
 import tests
 from console import HBNBCommand
 from models.base_model import BaseModel
+from models.base_model import Base
 from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
@@ -157,3 +158,7 @@ class TestConsole(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             self.consol.onecmd("destroy BaseModel 234321")
             self.assertEqual("** no instance found **\n", f.getvalue())
+
+
+if __name__ == '__main__':
+    unittest.main()

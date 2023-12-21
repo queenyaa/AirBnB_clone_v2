@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ """
 
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 import unittest
 import datetime
 from os import getenv
@@ -17,7 +17,7 @@ class TestBaseModel(unittest.TestCase):
     def setUp(self):
         self.base = BaseModel()
         self.base.names = "Afi"
-        self.base.num =40
+        self.base.num = 40
 
         try:
             os.rename('file.json', 'tmp')
@@ -121,12 +121,12 @@ class TestBaseModel(unittest.TestCase):
         q = style.check_files(['models/base_model.py'])
         self.assertEqual(p.total_errors, 0, 'fix pep8')
 
-    @unittest.skipIf(getenv("HBNB_TYPE_STORAGE") = 'db', 'DB')
+    @unittest.skipIf(getenv("HBNB_TYPE_STORAGE") == 'db', 'DB')
     def test_BaseModel_saving(self):
         """ test the saving BaseModel """
         self.base.save()
         self.assertNotEqual(self.base.created_at, self.base.updated_at)
 
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     unittest.main()
