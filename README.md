@@ -34,4 +34,28 @@ By successfully completing Task 0, you establish a solid foundation for your ser
 ---
 
 ---
+## Task 1
+---
+Task 1 involves creating a Fabric script to generate a compressed archive (.tgz file) of the contents of the web_static folder. The generated archive is intended to capture the current state of the web application, including static files, stylesheets, and other assets.
+
+The importance of Task 1 lies in the following aspects:
+
+    Versioning and Deployment: By creating an archive of the web_static folder, you essentially create a versioned snapshot of your web application. This is a common practice in software development to track changes over time and allows for easy deployment or rollback to specific versions.
+
+    Portability: The compressed archive can be easily transferred between different environments or servers. This is crucial when deploying your web application to different servers or sharing it with others.
+
+    Automation: The use of a Fabric script (do_pack function) allows for automation of the packaging process. This is beneficial for continuous integration and deployment (CI/CD) workflows, where automated tasks are essential for efficiency.
+
+    Consistency: Creating an archive through a script ensures consistency in the packaging process. Everyone using the script will generate the archive in the same way, reducing the chances of human error.
+
+    Ease of Maintenance: As your web application evolves, having a versioned archive makes it easier to roll back to a previous state if issues arise with newer versions. It provides a safety net during development and updates.
+
+    Documentation: The generated archive serves as a form of documentation, capturing the state of the application at a specific point in time. This can be valuable for reference and troubleshooting.
+
+In summary, Task 1 is important for establishing good development practices, enabling automation, and ensuring the reproducibility and consistency of the web application deployment process.
+---
+
+---
+## Task 2
+---
 
