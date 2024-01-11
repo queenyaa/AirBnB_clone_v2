@@ -33,27 +33,37 @@ def do_pack():
         # local('mkdir -p versions')
         local("tar -cvzf {} web_static".format(archive_p))
         # if result.failed:
-            # return None
-        return archive_path
+        # return None
+        return archive_p
     except Exception as e:
         return None
+
+
+if __name__ == '__main__':
+    result = do_pack()
+    if result:
+        in_put = "web_static packed: {} -> {}Bytes"
+        print(in_put.format(result, os.path.getsize(result)))
+    else:
+        print("Packing failed.")
+
 
 def do_deploy(archive_path):
     """
     Distributes an archive to web servers
     """
-    if not isfile(archive_path):
+    if not exists(archive_path):
         return False
     try:
         # if not isfile(archive_path):
-            # return False
+        # return False
 
         file_n = archive_path.split("/")[-1]
         file_n_ext = file_n.split(".")[0]
         l_path = "/data/web_static/releases/"
 
         # if not exists(archive_path):
-            # return False
+        # return False
 
         put(archive_path, '/tmp/')
         run('sudo mkdir -p {}{}/'.format(l_path, file_n_ext))
@@ -70,6 +80,7 @@ def do_deploy(archive_path):
 
     except Exception as e:
         return False
+
 
 def deploy():
     """

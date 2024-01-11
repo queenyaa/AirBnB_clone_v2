@@ -12,16 +12,16 @@ import os
 env.hosts = ['54.237.74.212', '100.25.159.153']
 env.user = 'ubuntu'
 
-
+"""
 # Ensure the existence of the versions folder
 if not os.path.exists("versions"):
     os.makedirs("versions")
 
 
 def do_pack():
-    """
+    
     function to generate a .tgz archive from the contents of web_static
-    """
+    
     try:
         date_f = "%Y%m%d%H%M%S"
         cur_time = datetime.utcnow().strftime(date_f)
@@ -32,6 +32,8 @@ def do_pack():
         return archive_p
     except Exception as e:
         return None
+"""
+
 
 def do_deploy(archive_path):
     """
