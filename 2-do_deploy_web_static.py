@@ -1,50 +1,37 @@
 #!/usr/bin/python3
+
 """
-Fabric script to distribute an archive to web servers
+Fabric script to deploy a package
 """
 
-from fabric.api import env, put, run
-import os
+from fabric.api import put, run, env
+from os.path import exists
 
-# Define the environment and variables
 env.hosts = ['54.237.74.212', '100.25.159.153']
 env.user = 'ubuntu'
-env.key_filename = ['/root/.ssh/id_rsa']
 
 
 def do_deploy(archive_path):
     """
     Distributes an archive to web servers
     """
-    if not os.path.exists(archive_path):
-        return False
-
     try:
-        # Upload the archive to the /tmp/ directory of the web server
+        if not exists(archive_path):
+            return False
+
+        file_n = archive_path.split("/")[-1]
+        file_n_ext = file_n.split(".")[0]
+        l_path = "/data/web_static/releases/"
+
         put(archive_path, '/tmp/')
-
-        # Extract archive to /data/web_static/releases/file.jkp
-        filen = os.path.basename(archive_path)
-        filen_no_ext = os.path.splitext(filen)[0]
-        # release_p = '/tmp/{}'.format(filen_no_ext)
-        release_p = '/data/web_static/releases/{}'.format(filen_no_ext)
-        # print("Release Path:", release_p)
-        # run('sudo rm -rf {}'.format(release_p)) # remove existing pkg
-        run('sudo mkdir -p {}'.format(release_p))
-        run('tar -xzf /tmp/{} -C {}'.format(filen, release_p))
-
-        # permit_user = sudo chown -R ubuntu:ubuntu {}
-        # run('sudo chown -R /data/')
-        run('sudo chown -R ubuntu:ubuntu {}'.format(release_p))
-        # Delete the archive from the web server
-        run('rm /tmp/{}'.format(filen))
-
-        # Delete the symbolic link /data/web_static/current
-        cur_link = '/data/web_static/current'
-        run('rm -f {}'.format(cur_link))
-        # Create a new symbolic link
-        run('ln -s {} {}'.format(release_p, cur_link))
-
+        run('sudo mkdir -p {}{}/'.format(l_path, file_n_ext))
+        run('tar -xzf /tmp/{} -C {}{}/'.format(file_n, l_path, file_n_ext))
+        run('rm /tmp/{}'.format(file_n))
+        run('mv {0}{1}/web_static/* {0}{1}/'.format(l_path, file_n_ext))
+        run('rm -rf {}{}/web_static'.format(l_path, file_n_ext))
+        run('rm -rf /data/web_static/current')
+        run('ln -s {}{}/ /data/web_static/current'.format(l_path, file_n_ext))
         return True
+
     except Exception as e:
         return False
