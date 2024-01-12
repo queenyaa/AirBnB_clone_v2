@@ -25,6 +25,9 @@ echo "<html>
   </body>
 </html>" | sudo tee /data/web_static/releases/test/index.html
 
+# set ownership to ubuntu
+sudo chown -R ubuntu:ubuntu /data/web_static/releases/test/index.html
+
 # Personalized 301 page
 echo "https://www.holbertonschool.com" | sudo tee /data/web_static/releases/test/redirect_me
 
