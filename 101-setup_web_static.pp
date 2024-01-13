@@ -57,13 +57,14 @@ file { '/etc/nginx/sites-enabled/default':
     server_name _;
 
     root /data/web_static/current;
-    index index.html index.htm 0-index.html index.nginx-debian.html;
+    index index.html index.htm index.nginx-debian.html;
 
     location /hbnb_static {
         alias /data/web_static/current;
     }
 
     location / {
+	try_files $uri $uri =404;
         add_header X-Served-By $hostname;
         proxy_set_header Host $host;
         proxy_pass http://127.0.0.1:5000;
