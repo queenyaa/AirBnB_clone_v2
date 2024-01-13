@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python33-deploy_web_static.py
 
 """
 Fabric script to deploy a package
@@ -55,11 +55,13 @@ def do_deploy(archive_path):
         run('sudo mkdir -p {}{}/'.format(l_path, file_n_ext))
         run('sudo tar -xzf /tmp/{} -C {}{}/'.format
             (file_n, l_path, file_n_ext))
-        run('rm /tmp/{}'.format(file_n))
+        run('sudo rm /tmp/{}'.format(file_n))
         run('sudo mv {0}{1}/web_static/* {0}{1}/'.format(l_path, file_n_ext))
+        # run('sudo cp -r /data/web_static/releases/{0}/web_static/* \
+        # /data/web_static/current/'.format(file_n_ext))
         run('sudo rm -rf {}{}/web_static'.format(l_path, file_n_ext))
         run('sudo rm -rf /data/web_static/current')
-        run('sudo ln -sf {}{}/ /data/web_static/current'.format
+        run('sudo ln -s {}{}/ /data/web_static/current'.format
             (l_path, file_n_ext))
         print("New version deployed!")
         return True
