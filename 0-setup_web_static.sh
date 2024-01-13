@@ -34,7 +34,7 @@ echo "https://www.holbertonschool.com" | sudo tee /data/web_static/releases/test
 # Personalized 404 page
 echo "Ceci n'est pas une page" | sudo tee /data/web_static/releases/test/404.html
 
-sudo cp /etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default.bak
+# sudo cp /etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default.bak
 
 # Update Nginx configuration
 config_content="
