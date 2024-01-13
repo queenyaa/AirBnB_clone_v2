@@ -26,13 +26,15 @@ echo "<html>
 </html>" | sudo tee /data/web_static/releases/test/index.html
 
 # set ownership to ubuntu
-sudo chown -R ubuntu:ubuntu /data/web_static/releases/test/index.html
+sudo chown -R ubuntu:ubuntu /data/web_static/releases/test/
 
 # Personalized 301 page
 echo "https://www.holbertonschool.com" | sudo tee /data/web_static/releases/test/redirect_me
 
 # Personalized 404 page
 echo "Ceci n'est pas une page" | sudo tee /data/web_static/releases/test/404.html
+
+sudo cp /etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default.bak
 
 # Update Nginx configuration
 config_content="
@@ -41,8 +43,8 @@ server {
 	listen [::]:80 default_server;
 	server_name _;
 
-	root /data/web_static/releases/test;
-	index index.html index.htm index.nginx-debian.html;
+	root /data/web_static/current;
+	index index.html index.htm 0-index.html index.nginx-debian.html;
 
 	location /hbnb_static {
 		alias /data/web_static/current;
@@ -70,7 +72,7 @@ server {
 	}
 }
 "
-echo "$config_content" | sudo tee /etc/nginx/sites-available/default
+echo "$config_content" | sudo tee /etc/nginx/sites-enabled/default
 
 # Restart Nginx
 sudo service nginx restart
