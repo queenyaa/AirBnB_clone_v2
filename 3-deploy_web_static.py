@@ -19,6 +19,50 @@ if not os.path.exists("versions"):
     os.makedirs("versions")
 
 
+def create_html_file():
+    """
+    Create my_index.html
+    """
+    html_content = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>My Index Page</title>
+    </head>
+    <body>
+        <h1> Welcome to some awesome stuff</h1>
+    </body>
+    </html>
+    """
+    with open("/data/web_static/current/my_index.html", "w") as html_file:
+        html_file.write(html_content)
+
+
+def create_0_indhtml():
+    """
+    create 0_index
+    """
+    html_content = """
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <title>AirBnB clone</title>
+        </head>
+        <body style="margin: 0px; padding: 0px;">
+            <header style="height: 70px; width: 100%; background-color: #FF0000">
+            </header>
+
+            <footer style="position: absolute; left: 0; bottom: 0; height: 60px; width: 100%; background-color: #00FF00; text-align: center; overflow: hidden;">
+                <p style="line-height: 60px; margin: 0px;">Holberton School</p>
+            </footer>
+        </body>
+    </html>
+    """
+    with open("/data/web_static/current/0_index.html", "w") as html_file:
+        html_file.write(html_content)
+
+
 def do_pack():
     """
     function to generate a .tgz archive from the contents of web_static
@@ -29,6 +73,9 @@ def do_pack():
         cur_time = datetime.utcnow().strftime(date_f)
         archive_n = "web_static_{}.tgz".format(cur_time)
         archive_p = "versions/{}".format(archive_n)
+
+        create_html_file()
+        create_0_indhtml()
 
         local("sudo tar -cvzf {} web_static".format(archive_p))
         return archive_p
