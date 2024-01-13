@@ -1,4 +1,4 @@
-#!/usr/bin/python33-deploy_web_static.py
+#!/usr/bin/python3
 
 """
 Fabric script to deploy a package
