@@ -1,4 +1,4 @@
-#!/usr/bin/python 3
+#!/usr/bin/python3
 """
 Flask Web application with a route that displays "Hello HBNB"
 """
