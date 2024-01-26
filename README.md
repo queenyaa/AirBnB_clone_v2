@@ -14,7 +14,7 @@ If you have a specific context or task related to "web_static" in mind, please p
 ---
 
 ---
-## Task o
+## Task 0
 ---
 Task 0 involved troubleshooting and resolving issues related to the installation and configuration of Nginx on your server. This task is crucial because it lays the foundation for the proper functioning of the web server, which is essential for serving web pages and applications.
 
@@ -60,22 +60,21 @@ In summary, Task 1 is important for establishing good development practices, ena
 ---
 Task 2 involves creating a Fabric script (`2-do_deploy_web_static.py`) for deploying the web static content to the web servers. The importance of this task lies in automating the deployment process, making it more efficient and less error-prone. Here are some key points:
 
-1. **Automation:** The Fabric script automates the process of deploying a web static content archive to multiple web servers. Automation helps reduce manual errors and ensures consistency across deployments.
+    Automation: The Fabric script automates the process of deploying a web static content archive to multiple web servers. Automation helps reduce manual errors and ensures consistency across deployments.
 
-2. **Consistency:** By using a script, you can ensure that the deployment steps are the same across different servers. This consistency is crucial for maintaining a reliable and predictable infrastructure.
+    Consistency: By using a script, you can ensure that the deployment steps are the same across different servers. This consistency is crucial for maintaining a reliable and predictable infrastructure.
 
-3. **Efficiency:** Manually copying files, extracting archives, and creating symbolic links on multiple servers can be time-consuming. The Fabric script streamlines these tasks, making the deployment process faster and more efficient.
+    Efficiency: Manually copying files, extracting archives, and creating symbolic links on multiple servers can be time-consuming. The Fabric script streamlines these tasks, making the deployment process faster and more efficient.
 
-4. **Scalability:** As the number of servers increases, manual deployment becomes impractical. With an automated script, you can easily deploy to multiple servers without much effort.
+    Scalability: As the number of servers increases, manual deployment becomes impractical. With an automated script, you can easily deploy to multiple servers without much effort.
 
-5. **Reusability:** The Fabric script can be reused for future deployments. Once it's set up and tested, it can be used whenever there's a need to deploy new versions of the web static content.
+    Reusability: The Fabric script can be reused for future deployments. Once it's set up and tested, it can be used whenever there's a need to deploy new versions of the web static content.
 
-6. **Error Handling:** The script includes error handling mechanisms, such as checking whether the archive file exists and returning `False` if it doesn't. This helps catch potential issues early in the deployment process.
+    Error Handling: The script includes error handling mechanisms, such as checking whether the archive file exists and returning False if it doesn't. This helps catch potential issues early in the deployment process.
 
-7. **Task Isolation:** By breaking down the deployment process into tasks, such as uploading the archive, extracting it, and creating symbolic links, the script makes it easier to identify and fix issues in specific steps.
+    Task Isolation: By breaking down the deployment process into tasks, such as uploading the archive, extracting it, and creating symbolic links, the script makes it easier to identify and fix issues in specific steps.
 
 Overall, Task 2 ensures a reliable and streamlined deployment process for the AirBnB Clone project, contributing to the overall efficiency and maintainability of the infrastructure.
----
 
 ---
 

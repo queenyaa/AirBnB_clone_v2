@@ -7,6 +7,7 @@ A web framework is a software framework designed to aid the development of web a
 Web frameworks often follow the model-view-controller (MVC) architecture, which separates the application logic into three interconnected components: the model (handles data and business logic), the view (manages the presentation and user interface), and the controller (handles user input and updates the model and view accordingly).
 
 Some popular web frameworks include Django (for Python), Ruby on Rails (for Ruby), Flask (for Python), Express (for Node.js), and Laravel (for PHP). These frameworks provide a foundation for building scalable, maintainable, and efficient web applications.
+
 ---
 
 ---
@@ -65,5 +66,26 @@ Completing this task helps reinforce the foundational concepts of building web a
 
 ---
 ## Task 2
+---
+Task 2 builds on the previous tasks and introduces the concept of dynamic routes in Flask. Here's the breakdown:
+
+1. **Flask Web Application Structure:** Similar to Task 1, you continue to work on structuring a Flask web application. The script should create an instance of the Flask class, define routes, and execute the application.
+
+2. **Dynamic Routes:** In this task, a dynamic route is introduced using `<text>` in the route definition. This means that the route will match any path that follows the pattern "/c/some_text". The value of `some_text` will be captured and passed as a variable to the route handling function.
+
+3. **Route Handling for Dynamic Route:** You implement a function that handles requests to the dynamic route "/c/<text>". The function displays "C " followed by the value of the `text` variable. Underscore `_` symbols are replaced with spaces.
+
+4. **Route Handling for Other Routes:** You also implement functions to handle requests to the root ("/") and "/hbnb" routes.
+
+5. **Server Configuration:** The Flask web application is configured to listen on '0.0.0.0' and port 5000.
+
+6. **Testing with cURL:** The provided cURL commands demonstrate how to test the web application with dynamic route handling. For example, "curl 0.0.0.0:5000/c/is_fun" should display "C is fun", and "curl 0.0.0.0:5000/c/cool" should display "C cool". Additionally, the response for the "/c" route is tested.
+
+Completing this task helps you become familiar with handling dynamic routes in Flask and provides more practice in creating routes and route handling functions.
+
+---
+
+---
+## Task 3
 ---
 
