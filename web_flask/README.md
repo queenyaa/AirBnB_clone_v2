@@ -105,4 +105,49 @@ By completing Task 3, you gain a deeper understanding of handling dynamic routes
 ---
 ## Task 4
 ---
+Task 4 is important as it introduces more dynamic behavior to your Flask application by handling different routes based on the input provided. Here's the significance of each part:
+
+1. **/number/<n> Route:**
+   - This route allows your application to handle requests with a numeric parameter (`<n>`).
+   - The `number_route` function checks whether the provided value (`n`) is an integer.
+   - If `n` is an integer, it responds with a message indicating that the input is a number.
+
+2. **Default Value for /python/<text>:**
+   - The `/python/<text>` route now has a default value for the `text` parameter, which is set to "is cool" if not provided.
+   - This makes the route more flexible, allowing users to either provide a custom value or use the default one.
+
+3. **Strict Slashes=False:**
+   - The `strict_slashes=False` option in the route definitions ensures that both `/c/<text>` and `/c/<text>/` are treated the same.
+   - It makes your routes more lenient regarding trailing slashes, providing a consistent experience for users.
+
+In summary, Task 4 extends the functionality of your Flask application, making it more versatile and capable of handling different types of input. It also demonstrates how to set default values for route parameters and ensures flexibility in handling trailing slashes.
+
+---
+
+---
+## Task 5
+---
+Task 5 is important because it introduces the concept of rendering HTML templates in a Flask web application. In this task, you are required to create a route that dynamically generates an HTML page based on an integer parameter passed in the URL.
+
+Here are the key aspects and importance of Task 5:
+
+1. **Dynamic HTML Content:** Task 5 allows you to dynamically generate HTML content based on user input. The route `/number_template/<n>` is designed to display an HTML page where the content depends on the integer value `n`.
+
+2. **Route Parameters and Type Conversion:** The use of `<int:n>` as a route parameter indicates that the value of `n` should be an integer. Flask automatically converts the parameter from the URL to an integer, simplifying the handling of different data types.
+
+3. **HTML Template Rendering:** This task introduces the concept of rendering HTML templates using Flask's templating engine. Instead of manually creating HTML content in your route function, you'll use an HTML template file. This improves code organization and separates logic from presentation.
+
+4. **Jinja2 Templating Engine:** Flask uses the Jinja2 templating engine, and Task 5 provides hands-on experience with using Jinja2 syntax in HTML templates. Jinja2 allows you to embed dynamic content and expressions directly into your HTML.
+
+5. **Better User Experience:** Generating HTML dynamically based on user input allows for a more interactive and personalized user experience. This is a fundamental aspect of web development, where dynamic content and user-specific responses enhance the quality of web applications.
+
+6. **Strict Slashes Option:** The task specifies the use of `strict_slashes=False` in the route definition. This option allows URLs with or without trailing slashes to be matched, providing flexibility in URL structures.
+
+Overall, Task 5 builds on the foundational knowledge of Flask routing and introduces key concepts like dynamic routing, route parameters, type conversion, and HTML template rendering—essential skills for developing dynamic and interactive web applications.
+
+---
+
+---
+## Task 6
+---
 
