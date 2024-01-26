@@ -88,4 +88,21 @@ Completing this task helps you become familiar with handling dynamic routes in F
 ---
 ## Task 3
 ---
+Task 3 is important because it introduces additional routes and dynamic routing in a Flask web application. It expands the functionality of the web application by handling different routes and allowing for dynamic content. Here's a breakdown of the key points in Task 3:
+
+1. **New Routes:** It adds two new routes: `/c/<text>` and `/python/<text>`, in addition to the existing routes (`/` and `/hbnb`). Each route serves a different purpose, providing more functionality to the web application.
+
+2. **Dynamic Content:** The routes `/c/<text>` and `/python/<text>` handle dynamic content by displaying the value of the `text` variable in the response. The underscores in the `text` variable are replaced with spaces.
+
+3. **Default Value:** The `/python/<text>` route has a default value for the `text` variable, which is "is cool" if not provided explicitly. This allows flexibility in handling requests where the `text` parameter may or may not be present.
+
+4. **Usage of `curl`:** The provided `curl` commands demonstrate how to interact with the web application from the command line, testing the responses for different route variations.
+
+By completing Task 3, you gain a deeper understanding of handling dynamic routes, extracting parameters from URLs, and providing varied responses based on user input. This is fundamental for building more complex web applications where routes may need to handle diverse data and content.
+
+---
+
+---
+## Task 4
+---
 
