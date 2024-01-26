@@ -10,17 +10,19 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return 'Hello HBNB?'
+    """ Returns - Hello HBNB """
+    return 'Hello HBNB!'
 
 
 @app.route('/hbnb')
 def hbnb():
+    """ Returns HBNB """
     return 'HBNB'
 
 
 @app.route('/c<text>')
 def c_route(text):
-    # Replace underscores with spaces
+    """ Replace underscores with spaces"""
     formatted_text = text.replace('_', ' ')
     return 'C {}'.format(formatted_text)
 
