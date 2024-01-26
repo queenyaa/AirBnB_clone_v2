@@ -47,4 +47,23 @@ Completing Task 0 provides a fundamental understanding of Flask development, pav
 ---
 ## Task 1
 ---
+Task 1 is an exercise designed to help you practice and understand the basics of creating routes in a Flask web application. The task specifically focuses on the following aspects:
+
+1. **Flask Web Application Structure:** You learn how to structure a basic Flask web application. This includes creating an instance of the Flask class, defining routes, and executing the application.
+
+2. **Route Definition:** You practice defining routes using the `@app.route` decorator. In this task, two routes are defined - one for the root URL ("/") and another for "/hbnb". The `strict_slashes=False` option is also used to make the route accept both "/hbnb" and "/hbnb/".
+
+3. **Route Handling:** You implement functions (`hello_hbnb` and `hbnb`) that handle requests to specific routes. These functions return simple text responses, which are then displayed when the corresponding routes are accessed.
+
+4. **Server Configuration:** You configure the Flask web application to listen on '0.0.0.0' (accessible from any IP address) and port 5000.
+
+5. **Testing with cURL:** The provided cURL command is an example of how to test your web application from the command line. It sends a request to the "/hbnb" route and displays the response.
+
+Completing this task helps reinforce the foundational concepts of building web applications using Flask, such as routing, route handling, and server configuration. It also provides hands-on experience in testing your application using cURL or other tools.
+
+---
+
+---
+## Task 2
+---
 
