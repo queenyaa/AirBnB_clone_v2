@@ -2,16 +2,19 @@
 """ Review module for the HBNB project """
 
 import models
-from models.base_model import BaseModel, Base
+from models.base_model import BaseModel
 from os import getenv
+import uuid
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, String, ForeignKey
 
 
-class Review(BaseModel, Base):
+class Review(BaseModel):
     """ Review classto store review information """
     if getenv('HBNB_TYPE_STORAGE') == 'db':
         __tablename__ = 'reviews'
+        id = Column(String(60), nullable=False, primary_key=True,
+                    default=lambda: str(uuid.uuid4()))
         text = Column(String(1024), nullable=False)
         place_id = Column(String(60), ForeignKey('places.id'), nullable=False)
         user_id = Column(String(60), ForeignKey('users.id'),

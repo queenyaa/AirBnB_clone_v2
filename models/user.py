@@ -3,15 +3,18 @@
 
 import hashlib
 from sqlalchemy import Column, String
-from models.base_model import BaseModel, Base
+from models.base_model import BaseModel
 import models
+import uuid
 from os import getenv
 from sqlalchemy.orm import relationship
 
 
-class User(BaseModel, Base):
+class User(BaseModel):
     """This class defines a user by various attributes"""
     __tablename__ = 'users'
+    id = Column(String(60), nullable=False, primary_key=True,
+                default=lambda: str(uuid.uuid4()))
     email = Column(String(128), nullable=False)
     password = Column(String(128), nullable=False)
     first_name = Column(String(128), nullable=True)
