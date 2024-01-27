@@ -52,9 +52,9 @@ class DBStorage:
                   }
         d_dict = {}
 
-        if cls != "":
+        if cls and cls.__name__ in classes:
             # if isinstance(cls, str) is True:
-            q_result = self.__session.query(classes[cls]).all()
+            q_result = self.__session.query(classes[cls.__name__]).all()
 
             for q_res in q_result:
                 ky = "{}.{}".format(q_res.__class__.__name__, q_res.id)
@@ -64,11 +64,11 @@ class DBStorage:
             for k, v in models.classes.items():
                 if k != "BaseModel":
                     q_result = self.__session.query(v).all()
-                    if len(q_result) > 0:
+                    if q_result:
                         for q_res in q_result:
                             key = "{}.{}".format(q_res.__class__.__name__,
                                                  q_res.id)
-                            d_dict[ky] = q_res
+                            d_dict[key] = q_res
             return (d_dict)
 
     def new(self, obj):
