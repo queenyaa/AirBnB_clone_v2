@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirBnB Clone</title>
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="stylesheet" href="../styles/3-header.css">
+    <link rel="stylesheet" href="../styles/3-footer.css">
+    <link rel="stylesheet" href="../styles/4-common.css">
+    <link rel="stylesheet" href="../styles/6-filters.css">
+    <link rel="stylesheet" href="../styles/8-places.css">
+</head>
+<body>
+    <header class="clearfix">
+        <div class="logo">
+        </div>
+    </header>
+
+    <section class="filters">
+        <h3 class="title">States</h3>
+        <div class="popover">
+            {% for state in states %}
+                <input type="checkbox" name="state" id="{{ state.id }}">
+                <label for="{{ state.id }}">{{ state.name }}</label><br>
+            {% endfor %}
+        </div>
+
+        <h3 class="title">Cities</h3>
+        <div class="popover">
+            {% for city in cities %}
+                <input type="checkbox" name="city" id="{{ city.id }}">
+                <label for="{{ city.id }}">{{ city.name }}</label><br>
+            {% endfor %}
+        </div>
+
+        <h3 class="title">Amenities</h3>
+        <div class="popover">
+            {% for amenity in amenities %}
+                <input type="checkbox" name="amenity" id="{{ amenity.id }}">
+                <label for="{{ amenity.id }}">{{ amenity.name }}</label><br>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="places">
+        {% for place in places %}
+            <article>
+                <div class="place_img">
+                    <img src="{{ place.picture }}" alt="{{ place.name }}">
+                </div>
+                <div class="place_name">
+                    <h2>{{ place.name }}</h2>
+                </div>
+                <div class="place_price">
+                    {{ place.price_by_night }}
+                </div>
+            </article>
+        {% endfor %}
+    </section>
+
+    <footer>
+        <div>
+            <p>Holberton School</p>
+	</div>
+    </footer>
+</body>
+</html>
+

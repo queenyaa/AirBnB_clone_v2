@@ -4,7 +4,6 @@
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 from models.base_model import BaseModel
-import models
 import uuid
 from os import getenv
 from sqlalchemy.ext.declarative import declarative_base
