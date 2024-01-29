@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirBnB clone</title>
+    <link rel="stylesheet" href="../styles/3-header.css">
+    <link rel="stylesheet" href="../styles/3-footer.css">
+    <link rel="stylesheet" href="../styles/4-common.css">
+    <link rel="stylesheet" href="../styles/6-filters.css">
+    <link rel="icon" href="../static/images/icon.ico">
+</head>
+<body>
+    <header>
+        <div class="logo">
+        </div>
+    </header>
+
+    <section class="filters">
+        <h3 class="title">States</h3>
+        <div class="popover">
+            {% for state in states %}
+                <input type="checkbox" name="state" id="{{ state.id }}">
+                <label for="{{ state.id }}">{{ state.name }}</label><br>
+            {% endfor %}
+        </div>
+
+        <h3 class="title">Cities</h3>
+        <div class="popover">
+            {% for city in cities %}
+                <input type="checkbox" name="city" id="{{ city.id }}">
+                <label for="{{ city.id }}">{{ city.name }}</label><br>
+            {% endfor %}
+        </div>
+
+        <h3 class="title">Amenities</h3>
+        <div class="popover">
+            {% for amenity in amenities %}
+                <input type="checkbox" name="amenity" id="{{ amenity.id }}">
+                <label for="{{ amenity.id }}">{{ amenity.name }}</label><br>
+            {% endfor %}
+        </div>
+    </section>
+
+    <footer>
+        <div class="clearfix">
+            <div class="follow">
+                <p class="grey">Holberton School</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
