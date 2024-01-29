@@ -7,17 +7,18 @@ from flask import Flask, render_template
 from models import storage
 from models.state import State
 from os import getenv
+from sqlalchemy.orm import scoped_session, sessionmaker
 
 app = Flask(__name__)
 
 
-@app.teardown_appcontent
+@app.teardown_appcontext
 def teat_down_appcontext(exception):
     """ Remove the current  SQLAlchemy Session """
     storage.close()
 
 
-@app.rout('/states_list', strict_slashes=False)
+@app.route('/states_list', strict_slashes=False)
 def states_list():
     """ Display an HTML page with list """
     states = storage.all(State).values()
