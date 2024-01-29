@@ -12,12 +12,6 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 app = Flask(__name__)
 
 
-@app.teardown_appcontext
-def teat_down_appcontext(exception):
-    """ Remove the current  SQLAlchemy Session """
-    storage.close()
-
-
 @app.route('/states_list', strict_slashes=False)
 def states_list():
     """ Display an HTML page with list """
@@ -25,6 +19,12 @@ def states_list():
     sorted_states = sorted(states, key=lambda state: state.name)
 
     return render_template('7-states_list.html', states=sorted_states)
+
+
+@app.teardown_appcontext
+def tear_down_appcontext(exception):
+    """ Remove the current  SQLAlchemy Session """
+    storage.close()
 
 
 if __name__ == '__main__':
