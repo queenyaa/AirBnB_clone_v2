@@ -8,7 +8,7 @@ from datetime import datetime
 from os import getenv
 import models
 
-t_fmt = "%Y-%m-%dT%H:%M:%S.%f"
+t_fmt = "%Y-%m-%d %H:%M:%S.%f"
 
 if getenv("HBNB_TYPE_STORAGE") == 'db':
     Base = declarative_base()

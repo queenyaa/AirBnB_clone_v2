@@ -4,13 +4,15 @@
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 from models.base_model import BaseModel
-from models.city import City
 import models
 import uuid
 from os import getenv
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
 
 
-class State(BaseModel):
+class State(BaseModel, Base):
     """ State class """
     __tablename__ = 'states'
     id = Column(String(60), nullable=False, primary_key=True,
@@ -20,11 +22,7 @@ class State(BaseModel):
     # for DBStorage
     if getenv("HBNB_TYPE_STORAGE") == 'db':
         cities = relationship("City", cascade="all, delete, delete-orphan",
-                              backref="states")
-
-    # For FileStorage
-    else:
-        name = ""
+                              backref="state")
 
     def __init__(self, *args, **kwargs):
         """ initializing the class """
