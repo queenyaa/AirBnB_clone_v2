@@ -2,11 +2,12 @@
 """This module defines a class User"""
 
 import hashlib
-from sqlalchemy import Column, String
 from models.base_model import BaseModel
 import models
 import uuid
 from os import getenv
+import sqlalchemy
+from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 
 
@@ -20,7 +21,7 @@ class User(BaseModel):
     first_name = Column(String(128), nullable=True)
     last_name = Column(String(128), nullable=True)
 
-    if getenv("HBNB_TYPE_STORAGE") == "db":
+    if models.storage_type == "db":
         places = relationship("Place", backref="users",
                               cascade="all, delete, delete-orphan")
         reviews = relationship("Review", backref="users",

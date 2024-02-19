@@ -26,7 +26,7 @@ def custom404():
     return render_template('404.html'), 404
 
 
-@app.route('/c<text>', strict_slashes=False)
+@app.route('/c/<text>', strict_slashes=False)
 def c_route(text):
     """ Replace underscores with spaces"""
     formatted_text = text.replace('_', ' ')

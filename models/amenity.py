@@ -10,7 +10,7 @@ import uuid
 
 
 class Amenity(BaseModel):
-    if getenv('HBNB_TYPE_STORAGE') == 'db':
+    if models.storage_type == 'db':
         __tablename__ = 'amenities'
         id = Column(String(60), nullable=False, primary_key=True,
                     default=lambda: str(uuid.uuid4()))

@@ -10,7 +10,7 @@ import models
 
 t_fmt = "%Y-%m-%d %H:%M:%S.%f"
 
-if getenv("HBNB_TYPE_STORAGE") == 'db':
+if models.storage_type == 'db':
     Base = declarative_base()
 else:
     Base = declarative_base()

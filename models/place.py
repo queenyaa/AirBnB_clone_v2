@@ -23,7 +23,7 @@ place_amenity = Table('place_amenity', Base.metadata,
 
 class Place(BaseModel):
     """ A place to stay """
-    if getenv('HBNB_TYPE_STORAGE', 'fs') == 'db':
+    if models.storage_type == 'db':
         __tablename__ = 'places'
         id = Column(String(60), nullable=False, primary_key=True,
                     default=lambda: str(uuid.uuid4()))

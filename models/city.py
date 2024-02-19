@@ -15,7 +15,7 @@ Base = declarative_base()
 
 class City(BaseModel, Base):
     """ The city class, contains state ID and name """
-    if getenv('HBNB_TYPE_STORAGE') == 'db':
+    if models.storage_type == 'db':
         __tablename__ = 'cities'
         id = Column(String(60), nullable=False, primary_key=True,
                     default=lambda: str(uuid.uuid4()))

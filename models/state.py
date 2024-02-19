@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ State Module for HBNB project """
 
+import models
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship, aliased
 from models.base_model import BaseModel
@@ -19,24 +20,21 @@ class State(BaseModel, Base):
     name = Column(String(128), nullable=False)
 
     # for DBStorage
-    if getenv("HBNB_TYPE_STORAGE") == 'db':
+    if models.storage_type == 'db':
         cities = relationship("City", cascade="all, delete, delete-orphan",
                               backref="state")
 
-    if getenv('HBNB_TYPE_STORAGE') != 'db':
+    if models.storage_type != 'db':
         @property
         def cities(self):
             """ Getter attribute that returns the list of City instances """
-            from models import storage
-            cities = []
+
+            city_list = []
             for city in models.storage.all(City).values():
                 if city.state_id == self.id:
                     city_list.append(city)
-            return (cities)
+            return (city_list)
 
     def __init__(self, *args, **kwargs):
         """ initializing the class """
         super().__init__(*args, **kwargs)
-
-
-aliased_state = aliased(State, name='state')
