@@ -21,6 +21,7 @@ class State(BaseModel, Base):
 
     # for DBStorage
     if models.storage_type == 'db':
+
         cities = relationship("City", cascade="all, delete, delete-orphan",
                               backref="state")
 
@@ -34,7 +35,3 @@ class State(BaseModel, Base):
                 if city.state_id == self.id:
                     city_list.append(city)
             return (city_list)
-
-    def __init__(self, *args, **kwargs):
-        """ initializing the class """
-        super().__init__(*args, **kwargs)

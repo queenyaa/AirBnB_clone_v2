@@ -20,8 +20,6 @@ class City(BaseModel, Base):
         id = Column(String(60), nullable=False, primary_key=True,
                     default=lambda: str(uuid.uuid4()))
         name = Column(String(128), nullable=False)
-        
-        from models.state import State
 
         state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
         places = relationship("Place", backref="cities",
@@ -32,7 +30,3 @@ class City(BaseModel, Base):
         id = ""
         name = ""
         state_id = ""
-
-    def __init__(self, *args, **kwargs):
-        """ city initialization """
-        super().__init__(*args, **kwargs)
